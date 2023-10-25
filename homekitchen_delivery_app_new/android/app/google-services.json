@@ -1,0 +1,198 @@
+{
+  "project_info": {
+    "project_number": "1086225396148",
+    "project_id": "homekitchen-ce34d",
+    "storage_bucket": "homekitchen-ce34d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086225396148:android:1a693be51503589de102e1",
+        "android_client_info": {
+          "package_name": "com.example.home_kitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086225396148-4t3uhugk5k3llbu4laqlkt4rkvfefu0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.home_kitchen",
+            "certificate_hash": "2d7decefb2c0085118ad3eb379ed57948c5e7ef5"
+          }
+        },
+        {
+          "client_id": "1086225396148-seo32ksn39t2414jcceqb1b4fuju6kpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LiYfJKw6oxlhKFg_bEYeTJRd_J4LcYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086225396148-d2khvepk8q51bti72kfb5la4rv5hemd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086225396148-0lr5vbe7hv4bjj2h32l1jhbsl65jtkv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homekitchenDeliveryApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086225396148:android:179326c5da473ebae102e1",
+        "android_client_info": {
+          "package_name": "com.example.homekitchen_delivery_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086225396148-seo32ksn39t2414jcceqb1b4fuju6kpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LiYfJKw6oxlhKFg_bEYeTJRd_J4LcYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086225396148-d2khvepk8q51bti72kfb5la4rv5hemd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086225396148-0lr5vbe7hv4bjj2h32l1jhbsl65jtkv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homekitchenDeliveryApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086225396148:android:c78c9c6463a286dbe102e1",
+        "android_client_info": {
+          "package_name": "com.example.homekitchen_delivery_app_new"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086225396148-seo32ksn39t2414jcceqb1b4fuju6kpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LiYfJKw6oxlhKFg_bEYeTJRd_J4LcYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086225396148-d2khvepk8q51bti72kfb5la4rv5hemd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086225396148-0lr5vbe7hv4bjj2h32l1jhbsl65jtkv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homekitchenDeliveryApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086225396148:android:a515bdd48b7d63dde102e1",
+        "android_client_info": {
+          "package_name": "com.varunguptapy.homeKtichen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086225396148-seo32ksn39t2414jcceqb1b4fuju6kpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LiYfJKw6oxlhKFg_bEYeTJRd_J4LcYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086225396148-d2khvepk8q51bti72kfb5la4rv5hemd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086225396148-0lr5vbe7hv4bjj2h32l1jhbsl65jtkv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homekitchenDeliveryApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086225396148:android:8003b89c5dd8cd7ce102e1",
+        "android_client_info": {
+          "package_name": "com.varunguptapy.homeKtichenDelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086225396148-seo32ksn39t2414jcceqb1b4fuju6kpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LiYfJKw6oxlhKFg_bEYeTJRd_J4LcYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086225396148-d2khvepk8q51bti72kfb5la4rv5hemd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086225396148-0lr5vbe7hv4bjj2h32l1jhbsl65jtkv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homekitchenDeliveryApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

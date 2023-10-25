@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "run config debug",
+            "program": "/bin/sh", // For Linux or Mac
+            "args": [
+                "flutter", "run", "--debug"
+            ],
+        },
+    ]
+}

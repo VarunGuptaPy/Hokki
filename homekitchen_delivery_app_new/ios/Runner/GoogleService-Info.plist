@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1086225396148-b75s067rno90mge1gfb1llacv38np1ie.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1086225396148-b75s067rno90mge1gfb1llacv38np1ie</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1086225396148-4t3uhugk5k3llbu4laqlkt4rkvfefu0l.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBxNXYE7hob7JF-2TDO6rteQ33Qqa124Oc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1086225396148</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.homekitchenDeliveryAppNew</string>
+	<key>PROJECT_ID</key>
+	<string>homekitchen-ce34d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>homekitchen-ce34d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1086225396148:ios:c3488e0ed229aa41e102e1</string>
+</dict>
+</plist>
