@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,18 @@ void verifyOtp(
     UserCredential credential =
         await auth!.signInWithCredential(phoneAuthCredential);
     if (credential.additionalUserInfo!.isNewUser) {
+      FirebaseFirestore.instance
+          .collection("Driver")
+          .doc(credential.user!.uid)
+          .set({
+        "profileState": "underPrrocess",
+      });
+      Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (c) => DriverDataScreen(
+                      way: "phone",
+                    )));
     } else {
       await firestore!
           .collection('Driver')

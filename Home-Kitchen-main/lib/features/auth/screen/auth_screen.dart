@@ -255,83 +255,83 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                                 shape: const StadiumBorder(),
                                                 backgroundColor:
                                                     const Color(0xff00B965)),
-                                            onPressed: () => {
+                                            onPressed: () async {
                                               if (emailController.text
                                                       .trim()
                                                       .isNotEmpty &&
                                                   passwordController.text
                                                       .trim()
-                                                      .isNotEmpty)
-                                                {
-                                                  if (isSignIn)
-                                                    {
-                                                      if (nameController.text
-                                                          .trim()
-                                                          .trim()
-                                                          .isNotEmpty)
-                                                        {
-                                                          setState(
-                                                            () {
-                                                              showCircle = true;
-                                                            },
-                                                          ),
-                                                          ref
-                                                              .watch(
-                                                                  authcontrollerProvider)
-                                                              .RegisterWithEmailAndPassword(
-                                                                  email:
-                                                                      emailController
-                                                                          .text,
-                                                                  name:
-                                                                      nameController
-                                                                          .text,
-                                                                  password:
-                                                                      passwordController
-                                                                          .text,
-                                                                  context:
-                                                                      context)
-                                                        }
-                                                    }
-                                                  else
-                                                    {
-                                                      setState(
-                                                        () {
-                                                          showCircle = true;
-                                                        },
-                                                      ),
-                                                      ref
-                                                          .watch(
-                                                              authcontrollerProvider)
-                                                          .logInWithEmailAndPassword(
-                                                              email:
-                                                                  emailController
-                                                                      .text,
-                                                              password:
-                                                                  passwordController
-                                                                      .text,
-                                                              context: context)
-                                                    }
+                                                      .isNotEmpty) {
+                                                if (isSignIn) {
+                                                  if (nameController.text
+                                                      .trim()
+                                                      .trim()
+                                                      .isNotEmpty) {
+                                                    setState(
+                                                      () {
+                                                        showCircle = true;
+                                                      },
+                                                    );
+
+                                                    await ref
+                                                        .watch(
+                                                            authcontrollerProvider)
+                                                        .RegisterWithEmailAndPassword(
+                                                            email:
+                                                                emailController
+                                                                    .text,
+                                                            name: nameController
+                                                                .text,
+                                                            password:
+                                                                passwordController
+                                                                    .text,
+                                                            context: context,
+                                                            showCircle:
+                                                                showCircle);
+                                                  }
+                                                } else {
+                                                  setState(
+                                                    () {
+                                                      showCircle = true;
+                                                    },
+                                                  );
+                                                  await ref
+                                                      .watch(
+                                                          authcontrollerProvider)
+                                                      .logInWithEmailAndPassword(
+                                                          email: emailController
+                                                              .text,
+                                                          password:
+                                                              passwordController
+                                                                  .text,
+                                                          context: context,
+                                                          showCircle:
+                                                              showCircle);
+                                                  setState(
+                                                    () {
+                                                      showCircle = false;
+                                                    },
+                                                  );
                                                 }
-                                              else
-                                                {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "Please fill all fields"),
-                                                    ),
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                        "Please fill all fields"),
                                                   ),
-                                                  setState(() {
-                                                    showCircle = false;
-                                                  })
-                                                }
+                                                );
+                                                setState(() {
+                                                  showCircle = false;
+                                                });
+                                              }
                                             },
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(10.0),
                                               child: isSignIn
                                                   ? const Text(
-                                                      "Sign in",
+                                                      "Sign up",
                                                       style: TextStyle(
                                                         fontSize: 20,
                                                         color: Colors.white,

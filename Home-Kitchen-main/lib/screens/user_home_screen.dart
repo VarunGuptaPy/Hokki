@@ -173,7 +173,7 @@ AppBar loadAppBar(
               icon: Icon(Icons.arrow_drop_down)),
         ],
       ),
-      subtitle: Text("Welcome Back, Shanti!"),
+      subtitle: Text("Welcome Back, ${sharedPreferences!.getString("name")}!"),
     ),
     actions: [
       TextButton(

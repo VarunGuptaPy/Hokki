@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:home_kitchen/features/auth/screen/are_you_a_screen.dart';
 import 'package:home_kitchen/features/auth/screen/auth_screen.dart';
 import 'package:home_kitchen/globals.dart';
 import 'package:home_kitchen/screens/sellerHomeScreen.dart';
@@ -15,6 +17,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  whereToNavigate() {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      var data = value.data()!;
+      if (data["profileState"] == "underProcess") {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (c) => AreYouAScreen(way: "google")));
+      } else {
+        if (sharedPreferences!.getString('role') == 'user') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (c) => UserHomeScreen()));
+        } else {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (c) => const SellerHomeScreen()));
+        }
+      }
+    });
+  }
+
   @override
   void initState() {
     setState(() {
@@ -24,11 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
       FirebaseAuth.instance.currentUser == null
           ? Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (c) => const AuthScreen()))
-          : sharedPreferences!.getString('role') == 'user'
-              ? Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (c) => UserHomeScreen()))
-              : Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (c) => const SellerHomeScreen()));
+          : whereToNavigate();
     });
   }
 

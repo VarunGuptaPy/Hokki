@@ -46,6 +46,10 @@ class AuthRepository {
           await auth.signInWithCredential(credential);
       if (userCredential.credential != null) {
         if (userCredential.additionalUserInfo!.isNewUser) {
+          FirebaseFirestore.instance
+              .collection("users")
+              .doc(userCredential.user!.uid)
+              .set({"profileState": "underProcess"});
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -116,7 +120,11 @@ class AuthRepository {
   }
 
   Future<void> logInWithEmailAndPassword(
-      BuildContext context, String email, String password) async {
+    BuildContext context,
+    String email,
+    String password,
+    bool showCircle,
+  ) async {
     try {
       UserCredential credential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -170,14 +178,25 @@ class AuthRepository {
       });
     } catch (e) {
       showSnackBar(context, e.toString());
+      showCircle = false;
     }
   }
 
   Future<void> registerWithEmailAndPassword(
-      BuildContext context, String email, String password, String name) async {
+    BuildContext context,
+    String email,
+    String password,
+    String name,
+    bool showCircle,
+  ) async {
     try {
       UserCredential credential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(credential.user!.uid)
+          .set({"profileState": "underProcess"});
+
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -189,6 +208,7 @@ class AuthRepository {
                   )));
     } catch (e) {
       showSnackBar(context, e.toString());
+      showCircle = false;
     }
   }
 
@@ -231,6 +251,11 @@ class AuthRepository {
       UserCredential credential =
           await auth.signInWithCredential(phoneAuthCredential);
       if (credential.additionalUserInfo!.isNewUser) {
+        FirebaseFirestore.instance
+            .collection("users")
+            .doc(credential.user!.uid)
+            .set({"profileState": "underProcess"});
+
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -330,10 +355,12 @@ class AuthRepository {
       myTotalEarning: 0,
       unWidraw: 0,
     );
+    var sellerMap = seller.toMap();
+    sellerMap["profileState"] = "Done";
     await firestore
         .collection('users')
         .doc(auth.currentUser!.uid)
-        .set(seller.toMap());
+        .set(sellerMap);
     sharedPreferences!.setString('name', seller.name);
     sharedPreferences!.setString("uid", FirebaseAuth.instance.currentUser!.uid);
     sharedPreferences!.setString('role', seller.role);
@@ -366,10 +393,9 @@ class AuthRepository {
           role: role,
           phoneNumber: phoneNumber,
           token: Token);
-      firestore
-          .collection('users')
-          .doc(auth.currentUser!.uid)
-          .set(user.toMap());
+      var userMap = user.toMap();
+      userMap["profileState"] = "Done";
+      firestore.collection('users').doc(auth.currentUser!.uid).update(userMap);
       sharedPreferences!.setString('name', name);
       sharedPreferences!.setString('role', role);
       sharedPreferences!.setString('phoneNumber', phoneNumber);

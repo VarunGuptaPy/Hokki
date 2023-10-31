@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -23,6 +24,12 @@ Future<void> signInWithGoogle(BuildContext context) async {
         await auth!.signInWithCredential(credential);
     if (userCredential.credential != null) {
       if (userCredential.additionalUserInfo!.isNewUser) {
+        FirebaseFirestore.instance
+            .collection("Driver")
+            .doc(userCredential.user!.uid)
+            .set({
+          "profileState": "underPrrocess",
+        });
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(

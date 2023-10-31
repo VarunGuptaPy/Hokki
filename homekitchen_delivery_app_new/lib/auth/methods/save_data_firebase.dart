@@ -10,6 +10,8 @@ Future<void> saveDataToFirebase(
   Driver driver,
 ) async {
   Map<String, dynamic> driverMap = driver.toMap();
+  driverMap["profileState"] =
+      "Done"; // Changing profile state to done means profile has been created
   await FirebaseFirestore.instance
       .collection("Driver")
       .doc(driverMap["uid"])

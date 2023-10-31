@@ -18,20 +18,23 @@ class AuthController {
     await authRepository.signInWithGoogle(context);
   }
 
-  void logInWithEmailAndPassword(
+  Future<void> logInWithEmailAndPassword(
       {required String email,
       required String password,
-      required BuildContext context}) async {
-    await authRepository.logInWithEmailAndPassword(context, email, password);
+      required BuildContext context,
+      required bool showCircle}) async {
+    await authRepository.logInWithEmailAndPassword(
+        context, email, password, showCircle);
   }
 
-  void RegisterWithEmailAndPassword(
+  Future<void> RegisterWithEmailAndPassword(
       {required String email,
       required String password,
       required String name,
-      required BuildContext context}) async {
+      required BuildContext context,
+      required bool showCircle}) async {
     await authRepository.registerWithEmailAndPassword(
-        context, email, password, name);
+        context, email, password, name, showCircle);
   }
 
   void signInWithPhone(

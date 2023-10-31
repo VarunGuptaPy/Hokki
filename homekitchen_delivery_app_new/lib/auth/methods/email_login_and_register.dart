@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:homekitchen_delivery_app_new/auth/driver_data_screen.dart';
@@ -45,6 +46,12 @@ Future<void> registerWithEmailAndPassword(
     UserCredential credential = await auth!
         .createUserWithEmailAndPassword(email: email, password: password);
     // ignore: use_build_context_synchronously
+    FirebaseFirestore.instance
+        .collection("Driver")
+        .doc(credential.user!.uid)
+        .set({
+      "profileState": "underProcess",
+    });
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
