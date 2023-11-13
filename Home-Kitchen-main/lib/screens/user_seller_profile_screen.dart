@@ -215,7 +215,9 @@ class _UserSellerProfileScreenState extends State<UserSellerProfileScreen> {
                                             MaterialPageRoute(
                                                 builder: (c) =>
                                                     PostDetailScreen(
-                                                        posts: posts)));
+                                                      posts: posts,
+                                                      isSeller: false,
+                                                    )));
                                       }),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.all(

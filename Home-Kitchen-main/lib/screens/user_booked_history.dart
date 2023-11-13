@@ -29,6 +29,11 @@ class _UserBookedHistoryState extends State<UserBookedHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        "Your Booked food history",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      )),
       body: SingleChildScrollView(
         child: Column(
           children: [

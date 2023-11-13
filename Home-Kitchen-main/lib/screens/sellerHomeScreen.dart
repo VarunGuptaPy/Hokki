@@ -101,19 +101,19 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
               icon: Icon(
                 Icons.home,
               ),
-              label: '',
+              label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.add,
               ),
-              label: '',
+              label: 'Add Post',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
               ),
-              label: '',
+              label: 'Profile',
             ),
             // BottomNavigationBarItem(
             //   icon: Icon(Icons.people),

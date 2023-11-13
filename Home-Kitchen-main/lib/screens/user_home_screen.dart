@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -5,10 +6,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:home_kitchen/features/auth/screen/auth_screen.dart';
 import 'package:home_kitchen/globals.dart';
+import 'package:home_kitchen/screens/sellerHomeScreen.dart';
 import 'package:home_kitchen/screens/user_booked_history.dart';
 import 'package:home_kitchen/screens/user_demo_history.dart';
 import 'package:home_kitchen/screens/user_see_highlight_screen.dart';
 import 'package:home_kitchen/screens/user_seller_near_me.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserHomeScreen extends StatefulWidget {
   @override
@@ -26,8 +29,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   List<Widget> screen = [
     const UserSeeHighLightScrenn(),
     const UserSellerNearMe(),
-    UserDemoHistory(),
-    UserBookedHistory(),
   ];
   Position? position;
   List<Placemark>? placemarks;
@@ -81,6 +82,68 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
     return loaded
         ? Scaffold(
             appBar: loadAppBar(context, _selectedIndex),
+            drawer: Drawer(
+              child: ListView(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                    ),
+                    radius: 100,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ListTile(
+                    title: Center(
+                      child: Text(
+                        sharedPreferences!.getString("name")!,
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                    titleAlignment: ListTileTitleAlignment.center,
+                    trailing: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        _showEditNameDialog(context);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  InkWell(
+                    child: ListTile(
+                      leading: Icon(Icons.history),
+                      title: Text(
+                        "Demo food history",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  InkWell(
+                    onTap: (() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (c) => UserBookedHistory()));
+                    }),
+                    child: ListTile(
+                      leading: Icon(Icons.history),
+                      title: Text(
+                        "Book food history",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
             bottomNavigationBar: showUI
                 ? BottomNavigationBar(
                     items: [
@@ -91,7 +154,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                                 ? Colors.black
                                 : Colors.grey,
                           ),
-                          label: '⇑',
+                          label: 'Highlights',
                         ),
                         BottomNavigationBarItem(
                           icon: Icon(
@@ -100,28 +163,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                                 ? Colors.black
                                 : Colors.grey,
                           ),
-                          label: '⇑',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(
-                            Icons.shopping_bag_outlined,
-                            color: _selectedIndex == 2
-                                ? Colors.black
-                                : Colors.grey,
-                          ),
-                          label: '⇑',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(
-                            Icons.sell_outlined,
-                            color: _selectedIndex == 3
-                                ? Colors.black
-                                : Colors.grey,
-                          ),
-                          label: '⇑',
+                          label: 'Sellers Near You',
                         ),
                       ],
-                    type: BottomNavigationBarType.shifting,
+                    type: BottomNavigationBarType.fixed,
                     currentIndex: _selectedIndex,
                     selectedItemColor: Colors.black,
                     iconSize: 40,
@@ -198,4 +243,51 @@ String renderText(int selectedIndex) {
   } else {
     return "Book History";
   }
+}
+
+Future<void> _showEditNameDialog(BuildContext context) async {
+  TextEditingController _nameController = TextEditingController();
+
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Enter the Edited Name'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                hintText: 'Enter Name',
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              // Implement your logic for "Done" button here
+              await FirebaseFirestore.instance
+                  .collection("users")
+                  .doc(FirebaseAuth.instance.currentUser!.uid)
+                  .update({
+                "name": _nameController.text,
+              });
+              sharedPreferences!.setString("name", _nameController.text);
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (c) => UserHomeScreen()));
+            },
+            child: Text('Done'),
+          ),
+        ],
+      );
+    },
+  );
 }

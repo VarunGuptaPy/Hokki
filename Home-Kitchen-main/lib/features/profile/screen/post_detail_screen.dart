@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:home_kitchen/models/posts.dart';
+import 'package:home_kitchen/screens/sellerHomeScreen.dart';
 
 class PostDetailScreen extends StatefulWidget {
   Posts posts;
-  PostDetailScreen({super.key, required this.posts});
+  bool? isSeller;
+  PostDetailScreen({super.key, required this.posts, this.isSeller});
 
   @override
   State<PostDetailScreen> createState() => _PostDetailScreenState();
@@ -22,6 +25,36 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           ),
         ),
         centerTitle: true,
+        actions: widget.isSeller!
+            ? [
+                PopupMenuButton(
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: InkWell(
+                        onTap: () async {
+                          await FirebaseFirestore.instance
+                              .collection("highlights")
+                              .doc(widget.posts.id)
+                              .delete();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (c) => SellerHomeScreen()));
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.delete),
+                            SizedBox(width: 8),
+                            Text('Delete Post'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                  icon: Icon(Icons.more_vert),
+                ),
+              ]
+            : [],
       ),
       body: Column(children: [
         SizedBox(

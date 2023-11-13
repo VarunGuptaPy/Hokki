@@ -115,7 +115,7 @@ class _AreYouAScreenState extends State<AreYouAScreen> {
                     padding:
                         EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
                     child: Text(
-                      "Provider",
+                      "Housewife",
                       style: TextStyle(fontSize: 40),
                     ),
                   ),
@@ -159,7 +159,7 @@ class _AreYouAScreenState extends State<AreYouAScreen> {
                     padding:
                         EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
                     child: Text(
-                      "Reciever",
+                      "User",
                       style: TextStyle(fontSize: 40),
                     ),
                   ),

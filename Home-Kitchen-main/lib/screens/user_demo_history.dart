@@ -28,6 +28,11 @@ class _UserDemoHistoryState extends State<UserDemoHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        "Your Demoed food history",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      )),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')

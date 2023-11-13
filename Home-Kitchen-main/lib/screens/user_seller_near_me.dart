@@ -38,6 +38,10 @@ class _UserSellerNearMeState extends State<UserSellerNearMe> {
         .get()
         .then(
       (value) {
+        deliveryPrice = value.data()!["costPerKm"];
+        setState(() {
+          showUI = true;
+        });
         showDialog(
           context: context,
           builder: (c) => SliderDialog(

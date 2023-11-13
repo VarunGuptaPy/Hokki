@@ -60,8 +60,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (c) =>
-                                          PostDetailScreen(posts: posts)));
+                                      builder: (c) => PostDetailScreen(
+                                            posts: posts,
+                                            isSeller: true,
+                                          )));
                             }),
                             child: ClipRRect(
                               borderRadius:

@@ -55,6 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff016b39),
       body: Center(
           child: Image.asset(
         'assets/ic_launcher-playstore.png',

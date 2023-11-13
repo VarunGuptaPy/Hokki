@@ -98,18 +98,21 @@ class _UserSeeHighLightScrennState extends State<UserSeeHighLightScrenn> {
                                   ),
                                 ],
                               ),
-                              ListTile(
-                                leading: Text(
-                                  posts.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
+                              Column(
+                                children: [
+                                  Text(
+                                    posts.title,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
                                   ),
-                                ),
-                                title: Text(
-                                  posts.description,
-                                  style: const TextStyle(fontSize: 12),
-                                ),
+                                  Text(
+                                    posts.description,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                ],
                               ),
                               bannerAds == null
                                   ? Container()

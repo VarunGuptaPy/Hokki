@@ -25,6 +25,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool showCircle = false;
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +110,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                                         padding:
                                                             EdgeInsets.all(8.0),
                                                         child: Text(
-                                                          "       Sign In",
+                                                          "       Sign up",
                                                           style: TextStyle(
                                                             color: Color(
                                                                 0xff00B965),
@@ -178,7 +179,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                                         padding:
                                                             EdgeInsets.all(8.0),
                                                         child: Text(
-                                                          "Sign In",
+                                                          "Sign up",
                                                           style: TextStyle(
                                                             color: Colors.white,
                                                           ),
@@ -205,6 +206,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                               TextField(
                                                 decoration: InputDecoration(
                                                   hintText: "Shanti gupta",
+                                                  hintStyle: TextStyle(
+                                                    color: Colors.grey[500],
+                                                  ),
                                                 ),
                                                 cursorHeight: 20,
                                                 controller: nameController,
@@ -225,7 +229,11 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                       cursorHeight: 20,
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                          hintText: "abc@gmail.com"),
+                                        hintText: "abc@gmail.com",
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey[500],
+                                        ),
+                                      ),
                                       controller: emailController,
                                     ),
                                     const SizedBox(
@@ -237,12 +245,28 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20),
                                     ),
-                                    TextField(
-                                      decoration: InputDecoration(
-                                          hintText: "Enter password Here"),
-                                      cursorHeight: 20,
-                                      controller: passwordController,
-                                      obscureText: true,
+                                    ListTile(
+                                      title: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: "Enter password Here",
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey[500],
+                                          ),
+                                        ),
+                                        cursorHeight: 20,
+                                        controller: passwordController,
+                                        obscureText: obscureText,
+                                      ),
+                                      trailing: IconButton(
+                                        icon: obscureText
+                                            ? Icon(Icons.visibility)
+                                            : Icon(Icons.visibility_off),
+                                        onPressed: () {
+                                          setState(() {
+                                            obscureText = !obscureText;
+                                          });
+                                        },
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 20,
